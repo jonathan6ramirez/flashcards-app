@@ -2,6 +2,7 @@ import React from "react";
 import Header from "./Components/Header";
 import NotFound from "./Components/NotFound";
 import CreateButton from "./Components/CreateButton"
+import CreateDeck from "./Components/CreateDeck";
 
 import {
   BrowserRouter as Router,
@@ -16,13 +17,18 @@ function Layout() {
     <Router>
       <Header />
       <div className="container">
-        {/* TODO: Implement the screen starting here */}
-        <Route exact={true} path="/">
-          <CreateButton />
-        </Route>
-        <Route>
-          <NotFound />
-        </Route>
+        <Switch>
+          {/* TODO: Implement the screen starting here */}
+          <Route exact={true} path="/">
+            <CreateButton />
+          </Route>
+          <Route exact path="/decks/new">
+            <CreateDeck />
+          </Route>
+          <Route>
+            <NotFound />
+          </Route>
+        </Switch>
       </div>
     </Router>
   );
