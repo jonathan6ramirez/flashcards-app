@@ -1,10 +1,9 @@
 import React from "react";
 import Header from "./Components/Header";
 import NotFound from "./Components/NotFound";
-import ShowDecks from "./Components/ShowDecks";
-import CreateButton from "./Components/CreateButton"
 import CreateDeck from "./Components/CreateDeck";
 
+import Home from "./Components/Home/Home";
 
 import {
   BrowserRouter as Router,
@@ -25,11 +24,10 @@ function Layout() {
         <Switch>
           {/* TODO: Implement the screen starting here */}
           <Route exact={true} path="/">
-            <CreateButton />
-            <ShowDecks setDecks={setDecks} decks={decks} />
+            <Home decks={decks} setDecks={setDecks} />
           </Route>
           <Route path="/decks/new">
-            <CreateDeck setDecks={setDecks} decks={decks} />
+            <CreateDeck  />
           </Route>
           <Route path="/decks/:deckId/edit">
             <></>
