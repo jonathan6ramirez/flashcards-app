@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { listDecks, deleteDeck } from "../../utils/api";
+import { listDecks, deleteDeck } from "../../../utils/api";
 import {Card, Modal, Button} from "react-bootstrap";
 function isPromise(promise) {  
     return !!promise && typeof promise.then === 'function'

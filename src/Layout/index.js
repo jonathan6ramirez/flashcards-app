@@ -4,6 +4,7 @@ import NotFound from "./Components/NotFound";
 import CreateDeck from "./Components/CreateDeck";
 
 import Home from "./Components/Home/Home";
+import StudyPage from "./Components/Study/StudyPage";
 
 import {
   BrowserRouter as Router,
@@ -13,10 +14,10 @@ import {
   useLocation
 } from "react-router-dom";
 import { useState } from "react";
-import { deleteCard } from "../utils/api";
 
 function Layout() {
   const [decks, setDecks] = useState([]);
+  const [studyPageDeck, setStudyPageDeck] = useState({});
   return (
     <Router>
       <Header />
@@ -29,8 +30,8 @@ function Layout() {
           <Route path="/decks/new">
             <CreateDeck  />
           </Route>
-          <Route path="/decks/:deckId/edit">
-            <></>
+          <Route path="/decks/:deckId/study">
+            <StudyPage studyPageDeck={studyPageDeck} setStudyPageDeck={setStudyPageDeck} />
           </Route>
           <Route>
             <NotFound />

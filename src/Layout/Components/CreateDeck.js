@@ -1,13 +1,7 @@
 import React from "react";
 import EditAndCreateForm from "./EditAndCreateInput";
 
-import {
-    BrowserRouter as Router,
-    Link,
-    Route,
-    Switch,
-    useLocation
-  } from "react-router-dom";
+import {Link} from "react-router-dom"; 
 
 function CreateDeck () {
     return (

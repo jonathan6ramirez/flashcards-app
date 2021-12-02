@@ -1,5 +1,5 @@
 import React from "react";
-import ShowDecks from "../ShowDecks";
+import ShowDecks from "./ShowDecks";
 import CreateButton from "./CreateButton";
 
 function Home ({decks, setDecks}) {
