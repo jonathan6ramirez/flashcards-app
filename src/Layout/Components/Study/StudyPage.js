@@ -10,6 +10,7 @@ function StudyPage ({ studyPageDeck, setStudyPageDeck}) {
     const [cards, setCards] = useState([])
     const [cardBack, setCardBack] = useState(false)
     const [currentCard, setCurrentCard] = useState(0);
+    const [loaded, setLoaded] = useState(false);
 
     useEffect(() => {
         async function loadCards () {
@@ -18,6 +19,7 @@ function StudyPage ({ studyPageDeck, setStudyPageDeck}) {
             //console.log("this the response from the readdeck function", cardsToShow.cards)
             setCards(cardsToShow.cards);
             //console.log(cards, "**inside the useeffect**")
+            setLoaded(true);
         }
         loadCards();
     }, [])
@@ -45,7 +47,8 @@ function StudyPage ({ studyPageDeck, setStudyPageDeck}) {
             currentCard={currentCard}
             setCurrentCard={setCurrentCard}
             cardBack={cardBack}
-            setCardBack={setCardBack}/>
+            setCardBack={setCardBack}
+            loaded={loaded}/>
         </>
     )}
     return null;

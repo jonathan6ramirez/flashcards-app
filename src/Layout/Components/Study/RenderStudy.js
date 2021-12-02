@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { readCard } from "../../../utils/api";
 import { Modal, Button } from "react-bootstrap";
 
-function RenderStudy ({cards,  currentCard, setCurrentCard, cardBack, setCardBack}) {
+function RenderStudy ({cards,  currentCard, setCurrentCard, cardBack, setCardBack, loaded}) {
     console.log(cards, "this is inside the renderstudy")
     console.log(cards.length )
     const handleNextCard = () => {
@@ -15,7 +15,7 @@ function RenderStudy ({cards,  currentCard, setCurrentCard, cardBack, setCardBac
     const [show, setShow] = useState(true);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true)
-    
+    if (loaded){
         if(currentCard <= cards.length - 1){
             if (cardBack){
                 return (
@@ -46,6 +46,8 @@ function RenderStudy ({cards,  currentCard, setCurrentCard, cardBack, setCardBac
                             <button onClick={() => handleNextCard()} className="btn btn-primary ms-2" >Next</button>
                         </div>
                 </div>
+        }} else {
+            return null
         }
 }
 
