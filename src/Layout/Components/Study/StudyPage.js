@@ -48,7 +48,7 @@ function StudyPage ({ studyPageDeck, setStudyPageDeck}) {
                     <li className="breadcrumb-item active" aria-current="page">Study</li>
                 </ol>
             </nav>
-            <h1 className="d-flex justify-content-center">Study: {studyPageDeck.name}</h1>
+            <h1 >{studyPageDeck.name}: Study</h1>
             <RenderStudy 
             cards={cards}
             currentCard={currentCard}
