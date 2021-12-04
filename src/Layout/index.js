@@ -5,6 +5,7 @@ import CreateDeck from "./Components/CreateDeck";
 
 import Home from "./Components/Home/Home";
 import StudyPage from "./Components/Study/StudyPage";
+import ViewDeckPage from "./Components/ViewDeck/ViewDeckPage";
 
 import {
   BrowserRouter as Router,
@@ -32,6 +33,9 @@ function Layout() {
           </Route>
           <Route path="/decks/:deckId/study">
             <StudyPage studyPageDeck={studyPageDeck} setStudyPageDeck={setStudyPageDeck} />
+          </Route>
+          <Route path="/decks/:deckId" >
+            <ViewDeckPage />
           </Route>
           <Route>
             <NotFound />
