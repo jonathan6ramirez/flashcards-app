@@ -30,9 +30,9 @@ function ShowDecks ({decks, setDecks}) {
 
     const renderDecks = (deck, index) => {
         return (
-            <div className="row justify-content-center">
+            <div key={index} className="row justify-content-center">
                 <div className="m-2 col-10">
-                    <Card key={index}>
+                    <Card>
                         <Card.Body>
                             <Card.Title>{deck.name}</Card.Title>
                             <Card.Text>{deck.description}</Card.Text>

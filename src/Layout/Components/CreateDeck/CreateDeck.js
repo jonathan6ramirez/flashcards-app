@@ -1,9 +1,14 @@
 import React from "react";
-import EditAndCreateForm from "./EditAndCreateInput";
+import EditAndCreateForm from "../EditAndCreateInput";
 
-import {Link} from "react-router-dom"; 
+import { Link, useLocation} from "react-router-dom"; 
 
 function CreateDeck () {
+    //const location = useLocation();
+    const handleSumbit = () => {
+        console.log("the submit button was clicked")
+        console.log("--this is the ouput from uselocation")
+    }
     return (
         <>
         <nav aria-label="breadcrumb">
@@ -17,7 +22,7 @@ function CreateDeck () {
                 <li class="breadcrumb-item active" aria-current="page">Create Deck</li>
             </ol>
         </nav>
-        <EditAndCreateForm />
+        <EditAndCreateForm handleSumbit={handleSumbit} />
         </>
     )
 }

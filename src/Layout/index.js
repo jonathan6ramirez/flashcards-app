@@ -1,7 +1,7 @@
 import React from "react";
 import Header from "./Components/Header";
 import NotFound from "./Components/NotFound";
-import CreateDeck from "./Components/CreateDeck";
+import CreateDeck from "./Components/CreateDeck/CreateDeck";
 
 import Home from "./Components/Home/Home";
 import StudyPage from "./Components/Study/StudyPage";

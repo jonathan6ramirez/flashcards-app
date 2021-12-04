@@ -1,13 +1,6 @@
 import React from "react";
-import {
-    BrowserRouter as Router,
-    Link,
-    Route,
-    Switch,
-    useLocation
-} from "react-router-dom";
 
-function EditAndCreateForm () {
+function EditAndCreateForm ({ handleSubmit }) {
     return (
         <form>
           <div class="mb-3">
@@ -21,7 +14,7 @@ function EditAndCreateForm () {
             </div>
           </div>
           <a class="btn btn-secondary" href="/" role="button">Cancel</a>
-          <button type="submit" class="btn btn-primary mx-2">Submit</button>
+          <button class="btn btn-primary mx-2" >Submit</button>
         </form>
     )
 }
