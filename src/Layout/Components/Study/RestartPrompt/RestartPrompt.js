@@ -1,22 +1,33 @@
-<>
-                    <Modal
-                        show={show}
-                        onHide={handleClose}
-                        backdrop="static"
-                        keyboard={false}
-                    >
-                        <Modal.Header closeButton>
-                            <Modal.Title>Modal title</Modal.Title>
-                        </Modal.Header>
-                        <Modal.Body>
-                            I will not close if you click outside me. Don't even try to press
-                            escape key.
-                        </Modal.Body>
-                        <Modal.Footer>
-                            <Button variant="secondary" onClick={handleClose}>
-                                Close
-                            </Button>
-                            <Button variant="primary">Understood</Button>
-                        </Modal.Footer>
-                    </Modal>
-                </>
+import React from "react";
+import { Modal, Button } from "react-bootstrap";
+
+function RestartModal ({show, handleRestart, handleShow, cards, currentCard}) {
+    console.log(cards, "this is the card length");
+    console.log(currentCard, "this is the currenCard")
+    if (currentCard == cards - 1){
+        handleShow();
+    }
+    return (
+        <>
+            <Modal
+                show={show}
+                backdrop="static"
+                keyboard={false}
+            >
+                <Modal.Header >
+                </Modal.Header>
+                <Modal.Body className="align-self-center">
+                    Restart cards?
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" href="/">
+                        Cancel
+                    </Button>
+                    <Button variant="primary"  onClick={handleRestart} >Restart</Button>
+                </Modal.Footer>
+            </Modal>
+        </>
+    )
+}
+
+export default RestartModal;

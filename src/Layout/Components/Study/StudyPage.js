@@ -4,6 +4,7 @@ import { Link, useParams } from "react-router-dom";
 import { readDeck } from "../../../utils/api";
 
 import RenderStudy from "./RenderStudy";
+import RestartModal from "./RestartPrompt/RestartPrompt";
 
 function StudyPage ({ studyPageDeck, setStudyPageDeck}) {
     const { deckId } = useParams();
@@ -12,19 +13,25 @@ function StudyPage ({ studyPageDeck, setStudyPageDeck}) {
     const [currentCard, setCurrentCard] = useState(0);
     const [loaded, setLoaded] = useState(false);
 
+    //MODAL STATE AND HANDLERS
+    const [show, setShow] = useState(false);
+    const handleRestart = () => {
+        setShow(false)
+        setCurrentCard(0)
+    };
+    const handleShow = () => setShow(true);
+
     useEffect(() => {
         async function loadCards () {
             const cardsToShow = await readDeck(deckId);
             setStudyPageDeck(cardsToShow);
-            //console.log("this the response from the readdeck function", cardsToShow.cards)
             setCards(cardsToShow.cards);
-            //console.log(cards, "**inside the useeffect**")
             setLoaded(true);
         }
         loadCards();
     }, [])
 
-   //console.log(studyPageDeck, "this is the study page deck")
+    
 
     if (studyPageDeck){
         return (
@@ -49,6 +56,11 @@ function StudyPage ({ studyPageDeck, setStudyPageDeck}) {
             cardBack={cardBack}
             setCardBack={setCardBack}
             loaded={loaded}/>
+            <RestartModal show={show} 
+            handleRestart={handleRestart} 
+            handleShow={handleShow} 
+            cards={cards.length} 
+            currentCard={currentCard} />
         </>
     )}
     return null;
