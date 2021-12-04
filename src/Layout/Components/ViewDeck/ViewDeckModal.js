@@ -2,7 +2,6 @@ import React from "react";
 import { Button, Modal } from "react-bootstrap";
 
 function ViewDeckModal({show, handleClose, handleShow, cardId}) {
-    console.log(show, "this is the show inside the viewdeck modal")
     return (
         <Modal
         show={show}

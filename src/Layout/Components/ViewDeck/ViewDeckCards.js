@@ -20,7 +20,7 @@ function ViewDeckCards ({loadedDeck, handleShow}) {
                     <div className="container">
                         <div className="row justify-content-end">
                             <button type="button" className="btn btn-secondary col-1">Edit</button>
-                            <button type="button" className="btn btn-danger ms-2 col-1" onClick={handleShow()}>Delete</button>
+                            <button type="button" className="btn btn-danger ms-2 col-1" onClick={() => handleShow(card.id)}>Delete</button>
                         </div>
                     </div>
                 </div>

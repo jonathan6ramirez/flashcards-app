@@ -15,10 +15,8 @@ function ViewDeckPage () {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = (value) => {
-        console.log("delete button clicked inside the view deck cards")
-        setCardId(value)
+        setCardId(value);
         setShow(true)
-        console.log(cardId)
     };
 
     useEffect(() => {
@@ -51,7 +49,7 @@ function ViewDeckPage () {
                 <div>
                     <h2 className="mt-4">Cards</h2>
                     <ViewDeckCards loadedDeck={loadedDeck} handleShow={handleShow}/>
-                    {show? null: <ViewDeckModal show={show} handleClose={handleClose} handleShow={handleShow} cardId={cardId}/>}
+                    <ViewDeckModal show={show} handleClose={handleClose} handleShow={handleShow} cardId={cardId}/>
                 </div>
             </div>
         )} else {
