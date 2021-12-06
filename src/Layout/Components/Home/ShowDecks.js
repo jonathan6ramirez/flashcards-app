@@ -17,8 +17,8 @@ function ShowDecks ({decks, setDecks}) {
             loadDecks();
     }, [])
     //Calls the deleteDeck from the utils api and deletes the deck selected
-    const handleDelete = (value) => {
-
+    const handleDelete = (deckId) => {
+        deleteDeck(deckId);
     }
 
     //Initiate the state for the modal drop down
@@ -59,7 +59,7 @@ function ShowDecks ({decks, setDecks}) {
                                             <Button variant="secondary" onClick={handleClose}>
                                                 Close
                                             </Button>
-                                            <Button variant="primary">Understood</Button>
+                                            <Button variant="primary" onClick={handleDelete(deck.id)}>Understood</Button>
                                         </Modal.Footer>
                                     </Modal>
                                 </div>
