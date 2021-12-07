@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import { readDeck } from "../../../utils/api";
 
 import ViewDeckCards from "./ViewDeckCards";
 import ViewDeckModal from "./ViewDeckModal";
 
 function ViewDeckPage () {
+    const history = useHistory();
     const { deckId } = useParams();
     const [loadedDeck, setLoadedDeck] = useState({});
     const [loaded, setLoaded] = useState(false);
@@ -18,6 +19,9 @@ function ViewDeckPage () {
         setCardId(value);
         setShow(true)
     };
+    const handleEditClick = () => {
+        history.push(`/decks/${deckId}/edit`)
+    }
 
     useEffect(() => {
         async function loadDeck() {
@@ -40,7 +44,7 @@ function ViewDeckPage () {
                     <h3>{loadedDeck.name}</h3>
                     <p>{loadedDeck.description}</p>
                     <div>
-                        <button type="button" className="btn btn-secondary">Edit</button>
+                        <button type="button" className="btn btn-secondary" onClick={handleEditClick} >Edit</button>
                         <button type="button" className="btn btn-primary ms-2">Study</button>
                         <button type="button" className="btn btn-primary ms-2">Add Cards</button>
                         <button type="button" className="btn btn-danger ms-2">Delete</button>

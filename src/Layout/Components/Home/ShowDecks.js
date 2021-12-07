@@ -12,7 +12,6 @@ function ShowDecks ({decks, setDecks}) {
     useEffect(() => {
         async function loadDecks () {
             const decksToShow = await listDecks();
-            console.log(decksToShow, "these are the decks to show inside the showDecks component")
             setDecks(...decks, decksToShow);
         }
             loadDecks();

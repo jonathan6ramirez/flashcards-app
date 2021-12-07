@@ -1,15 +1,16 @@
 import React, { useState } from "react";
-import EditAndCreateForm from "../EditAndCreateInput";
+import EditAndCreateForm from "../UtilComponents/EditAndCreateInput";
 
-import { Link, useLocation} from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { createDeck } from "../../../utils/api"; 
 
 function CreateDeck () {
-    //const location = useLocation();
+    const history = useHistory();
     //Initialize the states for the inputs and create the handler functions
     const [name, setName] = useState("");
     const [description, setDescription] = useState("");
     const [deck, setDeck] = useState({name: "", description: ""});
+
     const handleChange = ({ target }) => {
         const value = target.value;
         setDeck({
@@ -18,23 +19,22 @@ function CreateDeck () {
         });
     };
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
-        //console.log("this is the name value at the time of submission", `"${name}"`);
-        //console.log("this the description value at the time of submission", `"${description}"`)
         setDeck({
             ...deck,
             [name]: name,
             [description]: description
         });
-        //console.log("this is the deck value before the api call is made to create the deck", deck)
-        createDeck(deck);
-
+        const createdDeck = await createDeck(deck);
+        history.push(`/decks/${createdDeck.id}`);
+        
         //Clean up
         setName("");
         setDescription("");
         setDeck({});
     }
+    
     return (
         <>
         <nav aria-label="breadcrumb">

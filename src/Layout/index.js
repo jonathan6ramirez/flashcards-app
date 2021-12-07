@@ -1,11 +1,12 @@
 import React from "react";
-import Header from "./Components/Header";
-import NotFound from "./Components/NotFound";
+import Header from "./Components/UtilComponents/Header";
+import NotFound from "./Components/UtilComponents/NotFound";
 import CreateDeck from "./Components/CreateDeck/CreateDeck";
 
 import Home from "./Components/Home/Home";
 import StudyPage from "./Components/Study/StudyPage";
 import ViewDeckPage from "./Components/ViewDeck/ViewDeckPage";
+import EditDeckPage from "./Components/EditDeck/EditDeckPage";
 
 import {
   BrowserRouter as Router,
@@ -20,7 +21,7 @@ function Layout() {
   const [decks, setDecks] = useState([]);
   const [studyPageDeck, setStudyPageDeck] = useState({});
   return (
-    <Router>
+    <>
       <Header />
       <div className="container">
         <Switch>
@@ -34,6 +35,9 @@ function Layout() {
           <Route path="/decks/:deckId/study">
             <StudyPage studyPageDeck={studyPageDeck} setStudyPageDeck={setStudyPageDeck} />
           </Route>
+          <Route path="/decks/:deckId/edit">
+            <EditDeckPage />
+          </Route>
           <Route path="/decks/:deckId" >
             <ViewDeckPage />
           </Route>
@@ -42,7 +46,7 @@ function Layout() {
           </Route>
         </Switch>
       </div>
-    </Router>
+    </>
   );
 }
 
