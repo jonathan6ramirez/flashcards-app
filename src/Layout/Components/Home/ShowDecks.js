@@ -18,16 +18,20 @@ function ShowDecks ({decks, setDecks}) {
             loadDecks();
     }, [])
     //Calls the deleteDeck from the utils api and deletes the deck selected
-    const handleDelete = (deckId) => {
-        deleteDeck(deckId);
+    const handleDelete = () => {
+        deleteDeck(currentDeck);
     }
 
     //Initiate the state for the modal drop down
     const [show, setShow] = useState(false)
+    const [currentDeck, setCurrentDeck] = useState(0);
 
     //Make the handle functions for whenever the user clicks the modal and wants to cancel
     const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+    const handleShow = (deckId) => {
+        setShow(true);
+        setCurrentDeck(deckId);
+    }
 
     const renderDecks = (deck, index) => {
         return (
@@ -43,7 +47,7 @@ function ShowDecks ({decks, setDecks}) {
                                     <a href={`/decks/${deck.id}/study`} className="btn ms-2 btn-primary">Study</a>
                                 </div>
                                 <div className="col-2">
-                                    <button type="button" className="btn btn-danger" onClick={handleShow} >Delete</button>
+                                    <button type="delete" className="btn btn-danger" onClick={() => handleShow(deck.id)} >Delete</button>
                                     <Modal
                                         show={show}
                                         onHide={handleClose}
@@ -60,7 +64,7 @@ function ShowDecks ({decks, setDecks}) {
                                             <Button variant="secondary" onClick={handleClose}>
                                                 Close
                                             </Button>
-                                            <Button variant="primary" >Understood</Button>
+                                            <Button variant="primary" onClick={() => handleDelete()} >Delete deck: {currentDeck}</Button>
                                         </Modal.Footer>
                                     </Modal>
                                 </div>
