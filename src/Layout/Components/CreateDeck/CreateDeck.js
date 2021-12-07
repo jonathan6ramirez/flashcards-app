@@ -9,16 +9,25 @@ function CreateDeck () {
     //Initialize the states for the inputs and create the handler functions
     const [name, setName] = useState("");
     const [description, setDescription] = useState("");
-    const [deck, setDeck] = useState({});
-    const handleNameChange = (event) => setName(event.target.value);
-    const handleDescriptionChange = (event) => setDescription(event.target.value)
-    //Console log the name and description to see the values
-    console.log("this is the name value", name);
-    console.log("this is the description value", description);
+    const [deck, setDeck] = useState({name: "", description: ""});
+    const handleChange = ({ target }) => {
+        const value = target.value;
+        setDeck({
+            ...deck,
+            [target.name]: value,
+        });
+    };
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        setDeck({name, description});
+        //console.log("this is the name value at the time of submission", `"${name}"`);
+        //console.log("this the description value at the time of submission", `"${description}"`)
+        setDeck({
+            ...deck,
+            [name]: name,
+            [description]: description
+        });
+        //console.log("this is the deck value before the api call is made to create the deck", deck)
         createDeck(deck);
 
         //Clean up
@@ -40,8 +49,7 @@ function CreateDeck () {
             </ol>
         </nav>
         <EditAndCreateForm handleSubmit={handleSubmit} 
-        handleNameChange={handleNameChange} 
-        handleDescriptionChange={handleDescriptionChange} />
+        handleChange={handleChange} />
         </>
     )
 }

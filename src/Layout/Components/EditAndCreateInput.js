@@ -1,6 +1,6 @@
 import React from "react";
 
-function EditAndCreateForm ({ handleSubmit, handleNameChange, handleDescriptionChange }) {
+function EditAndCreateForm ({ handleSubmit, handleChange }) {
     return (
         <form>
           <div class="mb-3">
@@ -9,8 +9,9 @@ function EditAndCreateForm ({ handleSubmit, handleNameChange, handleDescriptionC
             class="form-control" 
             id="deckName" 
             placeholder="Deck Name" 
-            aria-describedby="deckHelp" 
-            onChange={handleNameChange}
+            aria-describedby="deckHelp"
+            name="name" 
+            onChange={handleChange}
             required/>
           </div>
           <div class="mb-3">
@@ -20,7 +21,8 @@ function EditAndCreateForm ({ handleSubmit, handleNameChange, handleDescriptionC
               id="deckDescription" 
               placeholder="Brief description of the deck" 
               rows="5"
-              onChange={handleDescriptionChange} 
+              name="description"
+              onChange={handleChange} 
               required></textarea>
             </div>
           </div>

@@ -3,6 +3,7 @@ import ShowDecks from "./ShowDecks";
 import CreateButton from "./CreateButton";
 
 function Home ({decks, setDecks}) {
+    console.log(decks, "these are the decks")
     return (
         <>
             <CreateButton />
