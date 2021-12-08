@@ -7,6 +7,7 @@ import Home from "./Components/Home/Home";
 import StudyPage from "./Components/Study/StudyPage";
 import ViewDeckPage from "./Components/ViewDeck/ViewDeckPage";
 import EditDeckPage from "./Components/EditDeck/EditDeckPage";
+import CreateCardPage from "./Components/CreateCard/CreateCardPage";
 
 import {
   BrowserRouter as Router,
@@ -37,6 +38,9 @@ function Layout() {
           </Route>
           <Route path="/decks/:deckId/edit">
             <EditDeckPage />
+          </Route>
+          <Route path="/decks/:deckId/cards/new" >
+            <CreateCardPage />
           </Route>
           <Route path="/decks/:deckId" >
             <ViewDeckPage />

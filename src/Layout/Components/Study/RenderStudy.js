@@ -1,9 +1,11 @@
 import React, { useState } from "react";
+import { useParams, useHistory } from "react-router-dom";
 import { readCard } from "../../../utils/api";
 import { Modal, Button } from "react-bootstrap";
 
 function RenderStudy ({cards,  currentCard, setCurrentCard, cardBack, setCardBack, loaded}) {
-    
+    const { deckId } = useParams();
+    const history = useHistory();
     const handleNextCard = () => {
         if(currentCard == cards.length - 1){
             return null;
@@ -11,7 +13,9 @@ function RenderStudy ({cards,  currentCard, setCurrentCard, cardBack, setCardBac
         setCurrentCard((currentValue) => currentValue + 1);
         setCardBack(!cardBack);
     }
-    
+    const handleCreateCard = () => {
+        history.push(`/decks/${deckId}/cards/new`);
+    }
     if (loaded){
         if(currentCard <= cards.length - 1 && cards.length > 3){
             if (cardBack){
@@ -39,7 +43,7 @@ function RenderStudy ({cards,  currentCard, setCurrentCard, cardBack, setCardBac
                 <>
                 <h2>Not enough cards.</h2>
                 <p>You need at least 3 cards to study. There are {cards.length} in this deck</p>
-                <button className="btn btn-primary" >Add Cards</button>
+                <button className="btn btn-primary" onClick={() => handleCreateCard()} >Add Cards</button>
                 </>
             )
         }} else {
@@ -47,4 +51,4 @@ function RenderStudy ({cards,  currentCard, setCurrentCard, cardBack, setCardBac
         }
 }
 
-export default RenderStudy;
+export default RenderStudy; 
