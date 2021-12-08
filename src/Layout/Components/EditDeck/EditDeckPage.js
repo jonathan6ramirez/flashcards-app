@@ -10,29 +10,19 @@ function EditDeckPage () {
     //States for the initial render
     const [deck, setDeck] = useState({});
     const [loaded, setLoaded] = useState(false)
-
-    //States for the input change and sumbit event
-    //const [name, setName] = useState("");
-    //const [description, setDescription] = useState("");
-    const [deckToUpdate, setDeckToUpdate] = useState({name: "", description: "", id: deckId});
+    //Input change and sumbit event
     const handleChange = ({ target }) => {
         const value = target.value;
-        setDeckToUpdate({
-            ...deckToUpdate,
+        setDeck({
+            ...deck,
             [target.name]: value,
         });
     };
-
     const handleSubmit = async (event) => {
         event.preventDefault();
-        console.log(deckToUpdate);
-        await updateDeck(deckToUpdate);
-        history.push(`/decks/${deckToUpdate.id}/edit`);
-        
-        //Clean up
-        setDeckToUpdate({name: "", description: "", id: deckId})
+        await updateDeck(deck);
+        history.push(`/`);
     }
-
     useEffect(() => {
         const loadDeck = async () => {
             const loadedDeck = await readDeck(deckId);
@@ -41,7 +31,6 @@ function EditDeckPage () {
         }
         loadDeck();
     }, [])
-
     if(loaded) {
         return (
             <>
