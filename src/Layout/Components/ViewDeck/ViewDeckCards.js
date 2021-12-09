@@ -1,6 +1,6 @@
 import React from "react";
 
-function ViewDeckCards ({loadedDeck, handleShow}) {
+function ViewDeckCards ({loadedDeck, handleShow, handleEditCardClick}) {
     const cards = loadedDeck.cards;
     //console.log(cards);
     const renderCards = (card, index) => {
@@ -19,7 +19,7 @@ function ViewDeckCards ({loadedDeck, handleShow}) {
                     </div>
                     <div className="container">
                         <div className="row justify-content-end">
-                            <button type="button" className="btn btn-secondary col-1">Edit</button>
+                            <button type="button" className="btn btn-secondary col-1" onClick={() => handleEditCardClick(card.id)} >Edit</button>
                             <button type="button" className="btn btn-danger ms-2 col-1" onClick={() => handleShow(card.id)}>Delete</button>
                         </div>
                     </div>

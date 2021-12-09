@@ -2,8 +2,9 @@ import React, { useState, useEffect } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import { readDeck, deleteDeck } from "../../../utils/api";
 
-import ViewDeckCards from "./ViewDeckCards";
 import ViewDeckModal from "./ViewDeckModal";
+import ViewDeckCards from "./ViewDeckCards";
+import DeckDelete from "./ViewDeckDeleteModal";
 
 function ViewDeckPage () {
     const history = useHistory();
@@ -14,11 +15,20 @@ function ViewDeckPage () {
     
     //Handle Functions and states
     const [show, setShow] = useState(false);
+    const [showDeckDelete, setsShowDeckDelete] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = (value) => {
         setCardId(value);
         setShow(true)
     };
+    const handleDeleteClose = () => setsShowDeckDelete(false);
+    const handleDeleteShow = (value) => {
+        setCardId(value);
+        setsShowDeckDelete(true);
+    };
+
+
+    //Handle the Deck Button Clicks
     const handleEditClick = () => {
         history.push(`/decks/${deckId}/edit`)
     }
@@ -31,6 +41,9 @@ function ViewDeckPage () {
     const handleDeckDeleteClick = () => {
         deleteDeck( deckId );
         history.push(`/`)
+    }
+    const handleEditCardClick = () => {
+        history.push(`/decks/${ deckId }/cards/${ cardId }/edit`)
     }
     useEffect(() => {
         async function loadDeck() {
@@ -56,17 +69,22 @@ function ViewDeckPage () {
                         <button type="button" className="btn btn-secondary" onClick={handleEditClick} >Edit</button>
                         <button type="button" className="btn btn-primary ms-2" onClick={handleStudyClick} >Study</button>
                         <button type="button" className="btn btn-primary ms-2" onClick={handleAddCardsClick} >Add Cards</button>
-                        <button type="button" className="btn btn-danger ms-2" onClick={handleDeckDeleteClick} >Delete</button>
+                        <button type="button" className="btn btn-danger ms-2" onClick={handleDeleteShow} >Delete</button>
                     </div>
                 </div>
                 <div>
                     <h2 className="mt-4">Cards</h2>
                     <ViewDeckCards loadedDeck={loadedDeck} 
-                    handleShow={handleShow}/>
+                    handleShow={handleShow}
+                    handleEditCardClick={handleEditCardClick}/>
                     <ViewDeckModal show={show} 
                     handleClose={handleClose} 
                     handleShow={handleShow} 
                     cardId={cardId}/>
+                    <DeckDelete showDeckDelete={showDeckDelete}
+                    handleDeleteClose={handleDeleteClose} 
+                    deckId={deckId} 
+                    handleDeckDeleteClick={handleDeckDeleteClick} />
                 </div>
             </div>
         )} else {
