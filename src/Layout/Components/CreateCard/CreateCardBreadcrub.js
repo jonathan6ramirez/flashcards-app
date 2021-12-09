@@ -14,6 +14,7 @@ function BreadCrumb () {
             setDeck(deckloaded);
             setLoaded(true);
         }
+        loadDeck();
     }, [])
     if(loaded){
         return (
@@ -26,7 +27,15 @@ function BreadCrumb () {
             </nav>
         )
     } else {
-        return null;
+        return (
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item text-primary">Loading...</li>
+                    <li class="breadcrumb-item active" aria-current="page">Add Card</li>
+                </ol>
+            </nav>
+        );
     }
 
 }

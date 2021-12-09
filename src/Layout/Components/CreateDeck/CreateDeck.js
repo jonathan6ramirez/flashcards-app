@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import EditAndCreateForm from "../UtilComponents/EditAndCreateInput";
-
 import { Link, useHistory } from "react-router-dom";
+
+import EditAndCreateForm from "../UtilComponents/EditAndCreateInput";
 import { createDeck } from "../../../utils/api"; 
 
 function CreateDeck () {

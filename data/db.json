@@ -53,6 +53,24 @@
       "back": "b",
       "deckId": 1,
       "id": 7
+    },
+    {
+      "front": "this is the front",
+      "back": "this is the back",
+      "deckId": 3,
+      "id": 8
+    },
+    {
+      "front": "this is another test",
+      "back": "why another",
+      "deckId": 3,
+      "id": 9
+    },
+    {
+      "front": "what does the fox say",
+      "back": "i have no idea",
+      "deckId": 3,
+      "id": 10
     }
   ]
 }
