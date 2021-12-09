@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useHistory } from "react-router-dom";
-import { readDeck } from "../../../utils/api";
+import { readDeck, deleteDeck } from "../../../utils/api";
 
 import ViewDeckCards from "./ViewDeckCards";
 import ViewDeckModal from "./ViewDeckModal";
@@ -12,7 +12,7 @@ function ViewDeckPage () {
     const [loaded, setLoaded] = useState(false);
     const [cardId, setCardId] = useState(0)
     
-    //Handle Functions
+    //Handle Functions and states
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = (value) => {
@@ -22,7 +22,16 @@ function ViewDeckPage () {
     const handleEditClick = () => {
         history.push(`/decks/${deckId}/edit`)
     }
-
+    const handleStudyClick = () => {
+        history.push(`/decks/${deckId}/study`)
+    }
+    const handleAddCardsClick = () => {
+        history.push(`/decks/${deckId}/cards/new`);
+    }
+    const handleDeckDeleteClick = () => {
+        deleteDeck( deckId );
+        history.push(`/`)
+    }
     useEffect(() => {
         async function loadDeck() {
             const deck = await readDeck(deckId);
@@ -45,15 +54,19 @@ function ViewDeckPage () {
                     <p>{loadedDeck.description}</p>
                     <div>
                         <button type="button" className="btn btn-secondary" onClick={handleEditClick} >Edit</button>
-                        <button type="button" className="btn btn-primary ms-2">Study</button>
-                        <button type="button" className="btn btn-primary ms-2">Add Cards</button>
-                        <button type="button" className="btn btn-danger ms-2">Delete</button>
+                        <button type="button" className="btn btn-primary ms-2" onClick={handleStudyClick} >Study</button>
+                        <button type="button" className="btn btn-primary ms-2" onClick={handleAddCardsClick} >Add Cards</button>
+                        <button type="button" className="btn btn-danger ms-2" onClick={handleDeckDeleteClick} >Delete</button>
                     </div>
                 </div>
                 <div>
                     <h2 className="mt-4">Cards</h2>
-                    <ViewDeckCards loadedDeck={loadedDeck} handleShow={handleShow}/>
-                    <ViewDeckModal show={show} handleClose={handleClose} handleShow={handleShow} cardId={cardId}/>
+                    <ViewDeckCards loadedDeck={loadedDeck} 
+                    handleShow={handleShow}/>
+                    <ViewDeckModal show={show} 
+                    handleClose={handleClose} 
+                    handleShow={handleShow} 
+                    cardId={cardId}/>
                 </div>
             </div>
         )} else {

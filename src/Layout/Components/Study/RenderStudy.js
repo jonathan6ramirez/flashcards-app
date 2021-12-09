@@ -16,8 +16,13 @@ function RenderStudy ({cards,  currentCard, setCurrentCard, cardBack, setCardBac
     const handleCreateCard = () => {
         history.push(`/decks/${deckId}/cards/new`);
     }
+    //console.log(cards.length, "this is the cards length inside the renderstudy component");
+    //console.log(currentCard, "this is the currentCard inside the renderstudy comp");
+    //console.log(cardBack, "this is the cardback state inside the renderstudy comp");
+    //console.log(loaded, "this is the loaded state inside the renderstudy comp");
     if (loaded){
-        if(currentCard <= cards.length - 1 && cards.length > 3){
+        if(currentCard <= cards.length - 1 && cards.length >= 3 ){
+            //console.log("this is inside the first check of the currentcard and the cards length")
             if (cardBack){
                 return (
                     <div className="card">

@@ -25,12 +25,14 @@ function StudyPage ({ studyPageDeck, setStudyPageDeck}) {
         async function loadCards () {
             const cardsToShow = await readDeck(deckId);
             setStudyPageDeck(cardsToShow);
+            //console.log(cardsToShow, "these are the cards inside ");
+            //console.log(cardsToShow.cards, "**these are the cards inside the returned deck**")
             setCards(cardsToShow.cards);
             setLoaded(true);
         }
         loadCards();
     }, [])
-
+    //console.log(cards, "---this is the cards state---")
     
 
     if (studyPageDeck){
