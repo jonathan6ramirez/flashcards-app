@@ -42,8 +42,8 @@ function ViewDeckPage () {
         deleteDeck( deckId );
         history.push(`/`)
     }
-    const handleEditCardClick = () => {
-        history.push(`/decks/${ deckId }/cards/${ cardId }/edit`)
+    const handleEditCardClick = (value) => {
+        history.push(`/decks/${ deckId }/cards/${ value }/edit`)
     }
     useEffect(() => {
         async function loadDeck() {
@@ -52,7 +52,7 @@ function ViewDeckPage () {
             setLoaded(true);
         }
         loadDeck()
-    }, [])
+    }, {loadedDeck})
     if(loaded){
         return (
             <div>
@@ -78,8 +78,7 @@ function ViewDeckPage () {
                     handleShow={handleShow}
                     handleEditCardClick={handleEditCardClick}/>
                     <ViewDeckModal show={show} 
-                    handleClose={handleClose} 
-                    handleShow={handleShow} 
+                    handleClose={handleClose}
                     cardId={cardId}/>
                     <DeckDelete showDeckDelete={showDeckDelete}
                     handleDeleteClose={handleDeleteClose} 

@@ -1,13 +1,7 @@
 import React from "react";
 import { Modal, Button } from "react-bootstrap";
 
-function RestartModal ({show, handleRestart, handleShow, cards, currentCard}) {
-    console.log(cards, "this is the cards length");
-    console.log(currentCard, "this is the current card");
-    console.log(currentCard == cards - 1 && cards >= 3, "this is the current boolean value");
-    if (currentCard == cards - 1 && cards >= 3){
-        handleShow();
-    }
+function RestartModal ({show, handleRestart}) {
     return (
         <>
             <Modal

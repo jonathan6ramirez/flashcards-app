@@ -3,16 +3,16 @@ import { useParams } from "react-router-dom";
 //Import the util functions needed to create and update a card
 import { createCard } from "../../../utils/api/index";
 
-function EditAndCreateCard ({ handleChange, handleSubmit, handleDone, deck}) {
+function EditAndCreateCard ({ handleChange, handleSubmit, handleDone, card}) {
     return (
         <form id="EditAndCreateCardForm">
             <div class="mb-3">
                 <label for="front" class="form-label">Front</label>
-                {deck ? <textarea 
+                {card ? <textarea 
                 class="form-control" 
                 id="front"
                 name="front"
-                placeholder={deck.front}
+                placeholder={card.front}
                 rows="3"
                 onChange={handleChange} 
                 required></textarea> :
@@ -27,11 +27,11 @@ function EditAndCreateCard ({ handleChange, handleSubmit, handleDone, deck}) {
             </div>
             <div class="mb-3">
                 <label for="back" class="form-label">Back</label>
-                {deck ? <textarea 
+                {card ? <textarea 
                 class="form-control" 
                 id="back"
                 name="back"
-                placeholder={deck.back} 
+                placeholder={card.back} 
                 rows="3"
                 onChange={handleChange} 
                 required></textarea> : 
@@ -44,13 +44,20 @@ function EditAndCreateCard ({ handleChange, handleSubmit, handleDone, deck}) {
                 onChange={handleChange} 
                 required></textarea>}
             </div>
+            {card ? <button 
+                type="cancel" 
+                class="btn btn-secondary"
+                onClick={handleDone}
+            >
+                Cancel
+            </button> :
             <button 
                 type="cancel" 
                 class="btn btn-secondary"
                 onClick={handleDone}
             >
                 Done
-            </button>
+            </button>}
             <button 
                 type="reset" 
                 class="btn btn-primary ms-2"

@@ -18,6 +18,7 @@ function StudyPage ({ studyPageDeck, setStudyPageDeck}) {
     const handleRestart = () => {
         setShow(false)
         setCurrentCard(0)
+        setCardBack(false);
     };
     const handleShow = () => setShow(true);
 
@@ -25,14 +26,11 @@ function StudyPage ({ studyPageDeck, setStudyPageDeck}) {
         async function loadCards () {
             const cardsToShow = await readDeck(deckId);
             setStudyPageDeck(cardsToShow);
-            //console.log(cardsToShow, "these are the cards inside ");
-            //console.log(cardsToShow.cards, "**these are the cards inside the returned deck**")
             setCards(cardsToShow.cards);
             setLoaded(true);
         }
         loadCards();
     }, [])
-    //console.log(cards, "---this is the cards state---")
     
 
     if (studyPageDeck){
@@ -57,12 +55,10 @@ function StudyPage ({ studyPageDeck, setStudyPageDeck}) {
             setCurrentCard={setCurrentCard}
             cardBack={cardBack}
             setCardBack={setCardBack}
-            loaded={loaded}/>
+            loaded={loaded}
+            handleShow={handleShow} />
             <RestartModal show={show} 
-            handleRestart={handleRestart} 
-            handleShow={handleShow} 
-            cards={cards.length} 
-            currentCard={currentCard} />
+            handleRestart={handleRestart} />
         </>
     )}
     return null;

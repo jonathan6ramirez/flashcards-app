@@ -1,7 +1,15 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import { Button, Modal } from "react-bootstrap";
+import { deleteCard } from "../../../utils/api";
 
-function ViewDeckModal({show, handleClose, handleShow, cardId}) {
+function ViewDeckModal({show, handleClose, cardId}) {
+    const history = useHistory();
+    const handleDelete = () => {
+        deleteCard(cardId);
+        handleClose();
+        history.go(0)
+    }
     return (
         <Modal
         show={show}
@@ -16,7 +24,7 @@ function ViewDeckModal({show, handleClose, handleShow, cardId}) {
             </Modal.Body>
             <Modal.Footer>
                 <Button variant="secondary" onClick={handleClose}>Close</Button>
-                <Button variant="primary">Understood</Button>
+                <Button variant="primary" onClick={handleDelete}>Understood</Button>
             </Modal.Footer>
         </Modal>
     )
