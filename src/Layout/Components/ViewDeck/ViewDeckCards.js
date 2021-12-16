@@ -5,8 +5,8 @@ function ViewDeckCards ({loadedDeck, handleShow, handleEditCardClick}) {
     //console.log(cards);
     const renderCards = (card, index) => {
         return (
-            <div key={index} class="card">
-                <div class="card-body">
+            <div key={index} className="card">
+                <div className="card-body">
                     <div className="container">
                         <div className="row row-cols-2 justify-content-between">
                             <div className="col-5">

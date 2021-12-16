@@ -12,7 +12,7 @@
     },
     {
       "name": "Jonathan Ramirez",
-      "description": "He is a cool dude",
+      "description": "he is cool",
       "id": 3
     }
   ],
@@ -48,29 +48,22 @@
       "id": 5
     },
     {
-      "cards": [],
-      "front": "b",
-      "back": "b",
-      "deckId": 1,
+      "front": "are you cool",
+      "back": "yeah",
+      "deckId": 3,
+      "id": 6
+    },
+    {
+      "front": "are you sure",
+      "back": "yes",
+      "deckId": 3,
       "id": 7
     },
     {
-      "front": "this is the front of the card",
-      "back": "this is the back",
+      "front": "you sure, you sure?",
+      "back": "umm...maybe",
       "deckId": 3,
-      "id": 11
-    },
-    {
-      "front": "are you coool",
-      "back": "yes yes you are",
-      "deckId": 3,
-      "id": 12
-    },
-    {
-      "front": "are you sure you are really cool",
-      "back": "yes you are",
-      "deckId": 3,
-      "id": 13
+      "id": 8
     }
   ]
 }

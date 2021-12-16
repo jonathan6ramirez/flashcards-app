@@ -23,11 +23,11 @@ function EditCardPage () {
         });
     };
     const handleDone = () => {
-        history.goBack();
+        history.push(`/decks/${deckId}`);
     }
     const handleSubmit = () => {
         updateCard(card);
-        history.goBack();
+        history.push(`/decks/${deckId}`);
     } 
     //Load the previous card values
     useEffect(() => {
@@ -39,7 +39,7 @@ function EditCardPage () {
             setLoaded(true);
         }
         loadCard();
-    }, {card})
+    }, [])
 
     if (loaded) {
         return (

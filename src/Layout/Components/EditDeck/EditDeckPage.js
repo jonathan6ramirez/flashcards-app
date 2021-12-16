@@ -35,17 +35,20 @@ function EditDeckPage () {
         return (
             <>
                 <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item">
+                    <ol className="breadcrumb">
+                        <li className="breadcrumb-item">
                             <a href="#!" data-abc="true">
-                                <i class="bi bi-house-door-fill"></i>
+                                <i className="bi bi-house-door-fill"></i>
                             </a>
                             <Link to="/">Home</Link>
                         </li>
-                        <li class="breadcrumb-item text-primary">{deck.name}</li>
-                        <li class="breadcrumb-item active" aria-current="page">Edit Deck</li>
+                        <li className="breadcrumb-item text-primary" >
+                            <Link to={`/decks/${deckId}`}>{deck.name}</Link>
+                        </li>
+                        <li className="breadcrumb-item active" aria-current="page">Edit Deck</li>
                     </ol>
                 </nav>
+                <p>{deck.name}</p>
                 <EditAndCreateForm handleSubmit={handleSubmit} handleChange={handleChange} deck={deck}/>
             </>
         )

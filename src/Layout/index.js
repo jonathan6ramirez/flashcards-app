@@ -10,13 +10,7 @@ import EditDeckPage from "./Components/EditDeck/EditDeckPage";
 import CreateCardPage from "./Components/CreateCard/CreateCardPage";
 import EditCardPage from "./Components/EditCard/EditCardPage";
 
-import {
-  BrowserRouter as Router,
-  Link,
-  Route,
-  Switch,
-  useLocation
-} from "react-router-dom";
+import {Route, Switch} from "react-router-dom";
 import { useState } from "react";
 
 function Layout() {

@@ -1,11 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { listDecks, deleteDeck } from "../../../utils/api";
 import {Card, Modal, Button} from "react-bootstrap";
-function isPromise(promise) {  
-    return !!promise && typeof promise.then === 'function'
-}
-
-
 
 function ShowDecks ({decks, setDecks}) {
 
@@ -38,7 +33,12 @@ function ShowDecks ({decks, setDecks}) {
                 <div className="m-2 col-10">
                     <Card>
                         <Card.Body>
-                            <Card.Title>{deck.name}</Card.Title>
+                            <div className="container justify-content-between" >
+                                <div className="row">
+                                    <Card.Title className="col">{deck.name}</Card.Title>
+                                    <p className="col">{deck.cards.length} cards</p>
+                                </div>
+                            </div>
                             <Card.Text>{deck.description}</Card.Text>
                             <div className="row">
                                 <div className="col-10">

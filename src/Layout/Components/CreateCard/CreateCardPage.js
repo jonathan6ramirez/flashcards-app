@@ -22,7 +22,7 @@ function CreateCardPage () {
     const handleSubmit = async (event) => {
         event.preventDefault();
         console.log("card submitted", card);
-        const createdCard = await createCard(deckId, card);
+        await createCard(deckId, card);
         
         //Clean up
         setCard({ front: "", back: ""});

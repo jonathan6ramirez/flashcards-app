@@ -44,7 +44,9 @@ function StudyPage ({ studyPageDeck, setStudyPageDeck}) {
                         </a>
                         <Link to="/">Home</Link>
                     </li>
-                    <li className="breadcrumb-item text-primary" >{studyPageDeck.name}</li>
+                    <li className="breadcrumb-item text-primary" >
+                        <Link to={`/decks/${deckId}`}>{studyPageDeck.name}</Link>
+                    </li>
                     <li className="breadcrumb-item active" aria-current="page">Study</li>
                 </ol>
             </nav>
