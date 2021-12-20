@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 import { listDecks, deleteDeck } from "../../../utils/api";
 import {Card, Modal, Button} from "react-bootstrap";
 
 function ShowDecks ({decks, setDecks}) {
-
+    const history = useHistory();
     useEffect(() => {
         async function loadDecks () {
             const decksToShow = await listDecks();
@@ -13,7 +14,10 @@ function ShowDecks ({decks, setDecks}) {
     }, [])
     //Calls the deleteDeck from the utils api and deletes the deck selected
     const handleDelete = () => {
+        //Delete the deck that is clicked
         deleteDeck(currentDeck);
+        //refresh the page
+        history.go(0);
     }
 
     //Initiate the state for the modal drop down
@@ -23,8 +27,9 @@ function ShowDecks ({decks, setDecks}) {
     //Make the handle functions for whenever the user clicks the modal and wants to cancel
     const handleClose = () => setShow(false);
     const handleShow = (deckId) => {
-        setShow(true);
+        //Set the deck before you show the modal
         setCurrentDeck(deckId);
+        setShow(true);
     }
 
     const renderDecks = (deck, index) => {
