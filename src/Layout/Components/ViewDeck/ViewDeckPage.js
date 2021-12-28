@@ -52,7 +52,7 @@ function ViewDeckPage () {
             setLoaded(true);
         }
         loadDeck()
-    }, [])
+    }, [deckId])
     if(loaded){
         return (
             <div>

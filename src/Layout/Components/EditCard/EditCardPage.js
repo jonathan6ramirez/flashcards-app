@@ -39,7 +39,7 @@ function EditCardPage () {
             setLoaded(true);
         }
         loadCard();
-    }, [])
+    }, [cardId, deckId])
 
     if (loaded) {
         return (

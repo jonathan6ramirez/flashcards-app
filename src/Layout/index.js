@@ -11,11 +11,8 @@ import CreateCardPage from "./Components/CreateCard/CreateCardPage";
 import EditCardPage from "./Components/EditCard/EditCardPage";
 
 import {Route, Switch} from "react-router-dom";
-import { useState } from "react";
 
 function Layout() {
-  const [decks, setDecks] = useState([]);
-  const [studyPageDeck, setStudyPageDeck] = useState({});
   return (
     <>
       <Header />
@@ -23,13 +20,13 @@ function Layout() {
         <Switch>
           {/* TODO: Implement the screen starting here */}
           <Route exact={true} path="/">
-            <Home decks={decks} setDecks={setDecks} />
+            <Home />
           </Route>
           <Route path="/decks/new">
             <CreateDeck  />
           </Route>
           <Route path="/decks/:deckId/study">
-            <StudyPage studyPageDeck={studyPageDeck} setStudyPageDeck={setStudyPageDeck} />
+            <StudyPage />
           </Route>
           <Route path="/decks/:deckId/edit">
             <EditDeckPage />

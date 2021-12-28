@@ -5,43 +5,55 @@ function EditAndCreateCard ({ handleChange, handleSubmit, handleDone, card}) {
         <form id="EditAndCreateCardForm">
             <div className="mb-3">
                 <label htmlFor="front" className="form-label">Front</label>
-                {card ? <textarea 
-                className="form-control" 
-                id="front"
-                name="front"
-                placeholder={card.front}
-                defaultValue={card.front}
-                rows="3"
-                onChange={handleChange} 
-                required></textarea> :
-                <textarea 
-                className="form-control" 
-                id="front"
-                name="front"
-                placeholder="Front side of the card" 
-                rows="3"
-                onChange={handleChange} 
-                required></textarea>}
+                {card ? (
+                    <textarea 
+                        className="form-control" 
+                        id="front"
+                        name="front"
+                        placeholder={card.front}
+                        defaultValue={card.front}
+                        rows="3"
+                        onChange={handleChange} 
+                        required 
+                    /> 
+                )
+                    :(
+                    <textarea 
+                        className="form-control" 
+                        id="front"
+                        name="front"
+                        placeholder="Front side of the card" 
+                        rows="3"
+                        onChange={handleChange} 
+                        required
+                    />
+                    )}
             </div>
             <div className="mb-3">
                 <label htmlFor="back" className="form-label">Back</label>
-                {card ? <textarea 
-                className="form-control" 
-                id="back"
-                name="back"
-                placeholder={card.back}
-                defaultValue={card.back}
-                rows="3"
-                onChange={handleChange} 
-                required></textarea> : 
-                <textarea 
-                className="form-control" 
-                id="back"
-                name="back"
-                placeholder="Back side of card" 
-                rows="3"
-                onChange={handleChange} 
-                required></textarea>}
+                {card ? (
+                    <textarea 
+                        className="form-control" 
+                        id="back"
+                        name="back"
+                        placeholder={card.back}
+                        defaultValue={card.back}
+                        rows="3"
+                        onChange={handleChange} 
+                        required
+                    />
+                ) 
+                    :( 
+                    <textarea 
+                        className="form-control" 
+                        id="back"
+                        name="back"
+                        placeholder="Back side of card" 
+                        rows="3"
+                        onChange={handleChange} 
+                        required
+                    />
+                    )}
             </div>
             {card ? 
             <button 

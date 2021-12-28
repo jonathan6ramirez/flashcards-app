@@ -6,12 +6,13 @@ import { readDeck } from "../../../utils/api";
 import RenderStudy from "./RenderStudy";
 import RestartModal from "./RestartPrompt/RestartPrompt";
 
-function StudyPage ({ studyPageDeck, setStudyPageDeck}) {
+function StudyPage () {
     const { deckId } = useParams();
     const [cards, setCards] = useState([])
     const [cardBack, setCardBack] = useState(false)
     const [currentCard, setCurrentCard] = useState(0);
     const [loaded, setLoaded] = useState(false);
+    const [studyPageDeck, setStudyPageDeck] = useState({});
 
     //MODAL STATE AND HANDLERS
     const [show, setShow] = useState(false);
@@ -30,7 +31,7 @@ function StudyPage ({ studyPageDeck, setStudyPageDeck}) {
             setLoaded(true);
         }
         loadCards();
-    }, [])
+    }, [deckId, setStudyPageDeck])
     
 
     if (studyPageDeck){

@@ -3,15 +3,16 @@ import { useHistory } from "react-router-dom";
 import { listDecks, deleteDeck } from "../../../utils/api";
 import {Card, Modal, Button} from "react-bootstrap";
 
-function ShowDecks ({decks, setDecks}) {
+function ShowDecks () {
+    const [decks, setDecks] = useState([]);
     const history = useHistory();
     useEffect(() => {
         async function loadDecks () {
             const decksToShow = await listDecks();
-            setDecks(...decks, decksToShow);
+            setDecks(decksToShow);
         }
             loadDecks();
-    }, [])
+    }, [setDecks])
     //Calls the deleteDeck from the utils api and deletes the deck selected
     const handleDelete = () => {
         //Delete the deck that is clicked

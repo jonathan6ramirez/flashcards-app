@@ -30,7 +30,7 @@ function EditDeckPage () {
             setLoaded(true);
         }
         loadDeck();
-    }, [])
+    }, [deckId])
     if(loaded) {
         return (
             <>

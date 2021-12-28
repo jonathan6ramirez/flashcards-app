@@ -15,7 +15,7 @@ function BreadCrumb () {
             setLoaded(true);
         }
         loadDeck();
-    }, [])
+    }, [deckId])
     if(loaded){
         return (
             <nav aria-label="breadcrumb">

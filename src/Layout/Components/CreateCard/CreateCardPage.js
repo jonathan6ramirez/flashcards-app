@@ -21,7 +21,6 @@ function CreateCardPage () {
     };
     const handleSubmit = async (event) => {
         event.preventDefault();
-        console.log("card submitted", card);
         await createCard(deckId, card);
         
         //Clean up
